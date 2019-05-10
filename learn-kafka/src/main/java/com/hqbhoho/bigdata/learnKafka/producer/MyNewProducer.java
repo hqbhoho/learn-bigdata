@@ -20,11 +20,18 @@ import java.util.stream.IntStream;
  */
 public class MyNewProducer {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(MyOldProducer.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(MyNewProducer.class);
 
     public static void main(String[] args) {
         Properties properties = initProps();
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
+//        ProducerRecord<String, Long> record1 =
+//                new ProducerRecord<>("wordcount-example-6-sink","kafka",100L);
+//        ProducerRecord<String, Long> record2 =
+//                new ProducerRecord<>("wordcount-example-6-sink","kafka",110L);
+//        producer.send(record1);
+//        producer.send(record2);
+
         //定义同（异）步
         boolean isAsync = false;
         IntStream.rangeClosed(0, 10).forEach(i ->

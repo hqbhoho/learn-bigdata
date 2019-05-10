@@ -42,7 +42,6 @@ public class UserAvroSerializer implements Serializer<User> {
         try {
             dataFileWriter.create(user.getSchema(), out);
             dataFileWriter.append(user);
-            dataFileWriter.flush();
             dataFileWriter.close();
         } catch (IOException e) {
             LOGGER.error(e.getMessage());

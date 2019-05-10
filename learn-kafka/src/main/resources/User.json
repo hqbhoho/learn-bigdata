@@ -1,0 +1,20 @@
+{
+  "type":"record",
+  "name":"User",
+  "fields":[
+    {"name":"id","type":"string"},
+    {"name":"name","type":"string"},
+    {"name": "items", "type":
+    {"type": "array",
+      "items":{
+        "type":"record",
+        "name" : "item",
+        "fields":[
+          {"name":"id","type":"int"},
+          {"name":"name","type":"string"},
+          {"name":"price","type":"float"}
+        ]}
+    }
+    }
+  ]
+}

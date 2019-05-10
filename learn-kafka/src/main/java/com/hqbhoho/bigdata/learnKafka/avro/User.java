@@ -14,14 +14,14 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
   @Deprecated public java.lang.CharSequence name;
   @Deprecated public java.util.List<com.hqbhoho.bigdata.learnKafka.avro.Item> items;
 
-  @Override
-  public String toString() {
-    return "User{" +
-            "id=" + id +
-            ", name=" + name +
-            ", items=" + items +
-            "} " + super.toString();
-  }
+//  @Override
+//  public String toString() {
+//    return "User{" +
+//            "id=" + id +
+//            ", name=" + name +
+//            ", items=" + items +
+//            "} ";
+//  }
 
   /**
    * Default constructor.  Note that this does not initialize fields

@@ -137,14 +137,14 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       super(com.hqbhoho.bigdata.learnKafka.avro.Item.SCHEMA$);
     }
 
-    @Override
-    public String toString() {
-      return "Builder{" +
-              "id=" + id +
-              ", name=" + name +
-              ", price=" + price +
-              "} " + super.toString();
-    }
+//    @Override
+//    public String toString() {
+//      return "Builder{" +
+//              "id=" + id +
+//              ", name=" + name +
+//              ", price=" + price +
+//              "} " ;
+//    }
 
     /**
      * Creates a Builder by copying an existing Builder.

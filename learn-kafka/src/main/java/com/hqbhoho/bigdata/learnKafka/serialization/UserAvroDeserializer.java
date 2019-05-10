@@ -52,6 +52,6 @@ public class UserAvroDeserializer implements Deserializer<User> {
 
     @Override
     public void close() {
-
+        // do nothing
     }
 }

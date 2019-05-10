@@ -1,7 +1,7 @@
 package com.hqbhoho.bigdata.learnKafka.producer;
 
-import com.hqbhoho.bigdata.learnKafka.avro.Item;
-import com.hqbhoho.bigdata.learnKafka.avro.User;
+import com.hqbhoho.bigdata.learnKafka.pojo.Item;
+import com.hqbhoho.bigdata.learnKafka.pojo.User;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
