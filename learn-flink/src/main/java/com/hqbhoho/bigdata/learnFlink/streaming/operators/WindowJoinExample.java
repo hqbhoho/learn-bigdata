@@ -93,7 +93,7 @@ public class WindowJoinExample {
     /**
      * String -> Tuple3
      */
-    static class TokenFunction implements MapFunction<String, Tuple3<String, Integer, Long>> {
+    public static class TokenFunction implements MapFunction<String, Tuple3<String, Integer, Long>> {
         @Override
         public Tuple3<String, Integer, Long> map(String value) throws Exception {
             String[] list = value.split(",");

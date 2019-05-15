@@ -62,5 +62,8 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-queryable-state-client-java_2.11:1.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-shaded-netty:4.1.32.Final-6.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.36" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.2" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
   </component>
 </module>
