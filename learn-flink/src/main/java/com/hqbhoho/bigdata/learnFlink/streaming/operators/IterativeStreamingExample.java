@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.streaming;
+package com.hqbhoho.bigdata.learnFlink.streaming.operators;
 
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.IterativeStream;

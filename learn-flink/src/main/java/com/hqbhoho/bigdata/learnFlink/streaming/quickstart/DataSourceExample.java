@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.streaming;
+package com.hqbhoho.bigdata.learnFlink.streaming.quickstart;
 
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.io.TextInputFormat;

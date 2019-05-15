@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.streaming.TimeAndWindow;
+package com.hqbhoho.bigdata.learnFlink.streaming.timeAndWindow;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple3;
@@ -36,7 +36,7 @@ import java.util.Optional;
  * watermark generate, watermark: 1557109592000
  * watermark generate, watermark: 1557109593000
  * WinodwFuncation invoked, Window:[1557109590000,1557109593000]
- * WinodwFuncation invoked, Window:[2019-05-06 10:26:30,2019-05-06 10:26:33]
+ * WinodwFuncation invoked, Window:[2019-05-06 10:26:30,2019-05-06 10:26:33] (3s window first event timestamp:2019-05-06 10:26:31)
  * hqbhoho,200,1557109591000
  * hqbhoho,200,1557109592000
  * (hqbhoho,400,1557109590000)
@@ -214,7 +214,7 @@ public class EventTimeAndWatermarkExample {
 
         @Override
         public Watermark getCurrentWatermark() {
-            Optional.ofNullable("watermark generate, watermark: " + (currentMaxTimestamp - maxOutOfOrderness)).ifPresent(System.out::println);
+            Optional.ofNullable("Thread: " + Thread.currentThread().getId() + ",watermark generate, watermark: " + (currentMaxTimestamp - maxOutOfOrderness)).ifPresent(System.out::println);
             return new Watermark(currentMaxTimestamp - maxOutOfOrderness);
         }
 

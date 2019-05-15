@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.streaming.StateAndCheckpoint;
+package com.hqbhoho.bigdata.learnFlink.streaming.stateAndCheckpoint;
 
 import org.apache.flink.api.common.JobID;
 import org.apache.flink.api.common.state.ListState;

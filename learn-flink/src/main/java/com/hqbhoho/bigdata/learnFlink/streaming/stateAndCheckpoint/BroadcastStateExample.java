@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.streaming.StateAndCheckpoint;
+package com.hqbhoho.bigdata.learnFlink.streaming.stateAndCheckpoint;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
@@ -117,7 +117,7 @@ public class BroadcastStateExample {
     /**
      * String -> Tuple2
      */
-    static class String2Tuple2MapperFuncation implements MapFunction<String, Tuple2<String, String>> {
+    public static class String2Tuple2MapperFuncation implements MapFunction<String, Tuple2<String, String>> {
 
         private String delimiter;
 
@@ -136,7 +136,7 @@ public class BroadcastStateExample {
     /**
      * String -> Tuple3
      */
-    static class String2Tuple3MapperFuncation implements MapFunction<String, Tuple3<String, String, String>> {
+    public static class String2Tuple3MapperFuncation implements MapFunction<String, Tuple3<String, String, String>> {
 
         private String delimiter;
 
