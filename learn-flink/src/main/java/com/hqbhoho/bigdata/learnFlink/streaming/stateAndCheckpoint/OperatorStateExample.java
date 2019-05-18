@@ -26,6 +26,8 @@ import java.util.Optional;
  * describe:
  * Operator State Example
  *
+ *  Only ListState
+ *
  * @author hqbhoho
  * @version [v1.0]
  * @date 2019/05/07

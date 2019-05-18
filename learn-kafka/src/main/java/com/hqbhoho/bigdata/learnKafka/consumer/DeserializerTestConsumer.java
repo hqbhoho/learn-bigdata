@@ -21,13 +21,12 @@ public class DeserializerTestConsumer {
 
     public static void main(String[] args) {
         KafkaConsumer<String, User> consumer = new KafkaConsumer<>(loadProp());
-        consumer.subscribe(Collections.singletonList("testTopic001"));
+        consumer.subscribe(Collections.singletonList("flink-test-2"));
         while(true) {
             ConsumerRecords<String, User> records = consumer.poll(100);
             records.forEach(record ->
             {
-                LOG.info("<====>value:{}", record.value());
-                LOG.info("<====>valueSize:{}", record.serializedValueSize());
+                LOG.info("<====> key:{},partition:{},value:{},", record.key(),record.partition(),record.value());
             });
         }
     }
@@ -37,8 +36,10 @@ public class DeserializerTestConsumer {
         props.put("bootstrap.servers", "192.168.5.108:9092,192.168.5.109:9092,192.168.5.110:9092");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "com.hqbhoho.bigdata.learnKafka.serialization.UserAvroDeserializer");
-        props.put("group.id", "hqbhoho003");
+        props.put("group.id", "hqbhoho004");
         props.put("client.id", "hqbhoho-client");
+//        props.put("auto.offset.reset","earliest");
+//        props.put("isolation.level","read_committed");
         return props;
     }
 }
