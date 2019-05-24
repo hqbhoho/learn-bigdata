@@ -10,6 +10,7 @@ import java.util.Properties;
 /**
  * describe:
  * KStream VS KTable
+ *
  * @author hqbhoho
  * @version [v1.0]
  * @date 2019/03/31
@@ -24,6 +25,7 @@ public class StreamVSTableExample {
 
         streams.start();
     }
+
     /**
      * 加载配置项
      *
