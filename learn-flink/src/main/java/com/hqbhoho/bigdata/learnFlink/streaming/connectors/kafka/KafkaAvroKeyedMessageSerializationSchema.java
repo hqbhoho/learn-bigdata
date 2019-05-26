@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * describe:
- *
+ * <p>
  * Kafka message Serialization avro
  *
  * @author hqbhoho

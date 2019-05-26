@@ -24,6 +24,8 @@ import java.util.concurrent.TimeUnit;
  * @version [v1.0]
  * @date 2019/04/30
  */
+
+
 public class MyDataSource extends RichSourceFunction<User> implements CheckpointedFunction {
 
     private Integer num;
@@ -50,18 +52,18 @@ public class MyDataSource extends RichSourceFunction<User> implements Checkpoint
     @Override
     public void run(SourceContext<User> ctx) throws Exception {
         while (true) {
-            if(num == null){
+            if (num == null) {
                 num = 0;
             }
             // 模拟故障，自动重启
-            if(num == 10){
+            if (num == 10) {
                 throw new Exception("<==================================================================>");
             }
             List<Item> items = new ArrayList<>();
             items.add(new Item(num, "item---" + num, num + 9.9));
             ctx.collect(new User(num, "user---" + num, items));
             TimeUnit.SECONDS.sleep(2);
-            Optional.of("<=======================> num: "+num).ifPresent(System.out::println);
+            Optional.of("<=======================> num: " + num).ifPresent(System.out::println);
             num++;
         }
     }

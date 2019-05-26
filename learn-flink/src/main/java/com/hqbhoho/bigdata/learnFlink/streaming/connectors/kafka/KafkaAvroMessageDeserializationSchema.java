@@ -46,6 +46,7 @@ public class KafkaAvroMessageDeserializationSchema implements DeserializationSch
 
     @Override
     public TypeInformation<User> getProducedType() {
-        return TypeInformation.of(new TypeHint<User>() {});
+        return TypeInformation.of(new TypeHint<User>() {
+        });
     }
 }
