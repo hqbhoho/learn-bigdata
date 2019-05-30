@@ -206,7 +206,7 @@ public class EventTimeAndWatermarkExample {
         env.execute("EventTimeAndWatermarkExample");
     }
 
-    static class MyTimeExtractor implements AssignerWithPeriodicWatermarks<Tuple3<String, Integer, Long>> {
+    public static class MyTimeExtractor implements AssignerWithPeriodicWatermarks<Tuple3<String, Integer, Long>> {
 
         private final long maxOutOfOrderness = 2000; // 2 seconds
 
