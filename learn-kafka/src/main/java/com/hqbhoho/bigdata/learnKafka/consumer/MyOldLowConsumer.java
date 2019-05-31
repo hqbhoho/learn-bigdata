@@ -36,7 +36,7 @@ public class MyOldLowConsumer {
         seeds.add("192.168.5.109");
         seeds.add("192.168.5.110");
         try {
-            example.run(10, "testTopic001", 1, seeds, 9092);
+            example.run(10, "testTopic001", 0, seeds, 9092);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +62,6 @@ public class MyOldLowConsumer {
         SimpleConsumer consumer = new SimpleConsumer(leadBroker, a_port, 100000, 64 * 1024, clientName);
         // 向分区获取最早的偏移量
         long readOffset = getLastOffset(consumer, a_topic, a_partition, kafka.api.OffsetRequest.EarliestTime(), clientName);
-
         int numErrors = 0;
         // 限制读取的数据量
         while (a_maxReads > 0) {
@@ -77,6 +76,8 @@ public class MyOldLowConsumer {
                     .build();
             //发送消费消息的请求
             FetchResponse fetchResponse = consumer.fetch(req);
+            System.out.println("==========================================================");
+
 
             if (fetchResponse.hasError()) {
                 numErrors++;
