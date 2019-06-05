@@ -85,8 +85,15 @@ public class JoinwithTemporalTable {
                 .joinLateral("rateConvet(timestamp1)", "currency = bz")
                 .select("name,currency,account * rate,timestamp1,timestamp2");
 
+        // SQL API
+        Table resultTable2 = tableEnv.sqlQuery("select name,currency,account * rate,timestamp1,timestamp2 " +
+                "from accounts , Lateral table (rateConvet(timestamp1)) " +
+                "where currency = bz");
+
         // Table   ---> DataStream
-        tableEnv.toAppendStream(resultTbale1, Row.class)
+        /*tableEnv.toAppendStream(resultTbale1, Row.class)
+                .print();*/
+        tableEnv.toAppendStream(resultTable2, Row.class)
                 .print();
         env.execute("JoinwithTemporalTable");
     }

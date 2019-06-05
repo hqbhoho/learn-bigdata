@@ -1,4 +1,4 @@
-package com.hqbhoho.bigdata.learnFlink.table_sql.tableAPI;
+package com.hqbhoho.bigdata.learnFlink.table_sql.sql;
 
 import com.hqbhoho.bigdata.learnFlink.streaming.timeAndWindow.EventTimeAndWatermarkExample;
 import org.apache.flink.api.common.functions.MapFunction;
@@ -8,51 +8,53 @@ import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.Table;
-import org.apache.flink.table.api.java.Over;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
 /**
  * describe:
+ * Currently, only windows with PRECEDING (UNBOUNDED and bounded) to CURRENT ROW range are supported.
+ * Exception in thread "main" org.apache.flink.table.api.TableException: Unsupported use of OVER windows. The window can only be ordered in ASCENDING mode.
  * <p>
- * 类似于sql中的开窗函数
+ * {@link com.hqbhoho.bigdata.learnFlink.table_sql.tableAPI.OverWindowsGroupExample}
  * <p>
- * Test
- * over window定义    以name分组   以timestamp排序   统计[timestamp-2000,timestamp]窗口的数据
+ * Test:
+ * over window定义    以name分组   以timestamp排序  统计[row_num-2,row_num]窗口的数据
  * 触发overwindow  计算的前提是  watermark >= timestamp
  * nc -l 19999
- * hqbhoho,100,1557109591000       watermark generate, watermark: 1557109589000    do nothing
- * hqbhoho,200,1557109592000       watermark generate, watermark: 1557109590000    do nothing
- * hqbhoho,101,1557109591000       watermark generate, watermark: 1557109590000    do nothing
- * hqbhoho,111,1557109591001       watermark generate, watermark: 1557109590000    do nothing
- * hqbhoho,122,1557109591002       watermark generate, watermark: 1557109590000    do nothing
- * hqbhoho,300,1557109593000       watermark generate, watermark: 1557109591000    hqbhoho,100,1557109591000   hqbhoho,101,1557109591000 trigger over window compute
- * hqbhoho,400,1557109594000       watermark generate, watermark: 1557109592000    hqbhoho,111,1557109591001   hqbhoho,122,1557109591002 hqbhoho,200,1557109592000 trigger over window compute
- * hqbhoho,500,1557109595000       watermark generate, watermark: 1557109593000    hqbhoho,300,1557109593000   trigger over window compute
- * hqbhoho,600,1557109596000       watermark generate, watermark: 1557109594000    hqbhoho,400,1557109594000   trigger over window compute
- * result
+ * hqbhoho,100,1557109591000       1
+ * hqbhoho,200,1557109592000       2
+ * hqbhoho,101,1557109591000       3
+ * hqbhoho,111,1557109591001       4
+ * hqbhoho,122,1557109591002       5
+ * hqbhoho,300,1557109593000       6
+ * hqbhoho,400,1557109594000       7
+ * hqbhoho,500,1557109595000       8
+ * hqbhoho,600,1557109596000       9
+ * <p>
+ * result:
  * Thread: 56,watermark generate, watermark: 1557109590000
  * Thread: 56,watermark generate, watermark: 1557109591000
- * hqbhoho,201,101,100
- * hqbhoho,201,101,100
+ * hqbhoho,1,100     ---> (1)
+ * hqbhoho,2,201     ---> (1,3)
  * Thread: 56,watermark generate, watermark: 1557109591000
  * Thread: 56,watermark generate, watermark: 1557109592000
- * hqbhoho,312,111,100
- * hqbhoho,434,122,100
- * hqbhoho,634,200,100
+ * hqbhoho,3,312     --->(1,3,4)
+ * hqbhoho,3,334     --->(3,4,5)
+ * hqbhoho,3,433     --->(2,4,5)
  * Thread: 56,watermark generate, watermark: 1557109592000
  * Thread: 56,watermark generate, watermark: 1557109593000
- * hqbhoho,934,300,100
+ * hqbhoho,3,622     --->(2,5,6)
  * Thread: 56,watermark generate, watermark: 1557109593000
  * Thread: 56,watermark generate, watermark: 1557109594000
- * hqbhoho,900,400,200
+ * hqbhoho,3,900     --->(2,6,7)
  * Thread: 56,watermark generate, watermark: 1557109594000
  *
  * @author hqbhoho
  * @version [v1.0]
- * @date 2019/05/29
+ * @date 2019/06/05
  */
-public class OverWindowsGroupExample {
+public class OverWindowAggregationExample {
     public static void main(String[] args) throws Exception {
         // 获取配置参数
         ParameterTool tool = ParameterTool.fromArgs(args);
@@ -76,18 +78,23 @@ public class OverWindowsGroupExample {
                     }
                 }).assignTimestampsAndWatermarks(new EventTimeAndWatermarkExample.MyTimeExtractor());
 
-        Table inputTable = tableEnv.fromDataStream(input, "name,account,timestamp.rowtime");
+        // DataStream ---> Table
+        Table inputTable = tableEnv.fromDataStream(input, "name,account,eventtime.rowtime");
 
-        Table resultTable = inputTable.window(
-                Over.partitionBy("name")
-                        .orderBy("timestamp")
-                        .preceding("2.second")
-                        .following("CURRENT_RANGE")
-                        .as("window")
-        )
-                .select("name,account.sum over window,account.max over window,account.min over window");
+        Table resultTable = tableEnv.sqlQuery(
+                "select name,count(account) over w,sum(account) over w " +
+                        "from " + inputTable + " Window w as " +
+                        "(" +
+                        "partition by name " +
+                        "order by eventtime " +
+                        "rows between 2 PRECEDING AND CURRENT ROW" +
+                        ")"
+        );
+
+        // Table ---> DataStream
         tableEnv.toAppendStream(resultTable, Row.class)
                 .print();
-        env.execute("OverWindowsGroupExample");
+
+        env.execute("OverWindowAggregationExample");
     }
 }

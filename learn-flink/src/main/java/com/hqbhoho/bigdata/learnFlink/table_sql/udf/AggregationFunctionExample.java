@@ -58,12 +58,15 @@ public class AggregationFunctionExample {
         Table resultTable1 = tableEnv.scan("example")
                 .groupBy("item")
                 .select("item,weight_avg(price,num) as avg");
+        // sql api
+        Table resultTable2 = tableEnv.sqlQuery("select item,weight_avg(price,num) from example group by item");
 
 
         //  Table  ---> DataStream
-        tableEnv.toRetractStream(resultTable1, Row.class)
+        /*tableEnv.toRetractStream(resultTable1, Row.class)
+                .print();*/
+        tableEnv.toRetractStream(resultTable2, Row.class)
                 .print();
-
         env.execute("AggregationFunctionExample");
     }
 
