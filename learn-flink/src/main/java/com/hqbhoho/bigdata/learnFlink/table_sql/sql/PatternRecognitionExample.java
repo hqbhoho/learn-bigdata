@@ -2,7 +2,7 @@ package com.hqbhoho.bigdata.learnFlink.table_sql.sql;
 
 /**
  * describe:
- *
+ * <p>
  * {@link com.hqbhoho.bigdata.learnFlink.table_sql.concepts.stream.DetectingPatternsInTablesExample}
  *
  * @author hqbhoho
