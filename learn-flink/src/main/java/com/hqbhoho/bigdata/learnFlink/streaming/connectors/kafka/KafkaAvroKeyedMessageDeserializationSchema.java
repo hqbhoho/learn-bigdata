@@ -16,6 +16,7 @@ import java.io.IOException;
  * describe:
  * <p>
  * Kafka message Deserialization avro
+ * org.apache.avro.AvroRuntimeException: Malformed data. Length is negative: -40  应该是消息中带了schema信息
  *
  * @author hqbhoho
  * @version [v1.0]

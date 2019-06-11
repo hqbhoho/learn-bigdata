@@ -1,0 +1,10 @@
+{
+  "namespace": "com.hqbhoho.bigdata.learnFlink.streaming.connectors.kafka.avro",
+  "type":"record",
+  "name":"Account",
+  "fields":[
+    {"name":"name","type":"string"},
+    {"name":"account","type":"double"},
+    {"name":"eventTime","type":"long"}
+  ]
+}

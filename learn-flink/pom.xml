@@ -175,6 +175,13 @@
             <artifactId>flink-avro</artifactId>
             <version>1.8.0</version>
         </dependency>
+        <!--avro-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-json</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
         <!--CEP-->
         <dependency>
             <groupId>org.apache.flink</groupId>
