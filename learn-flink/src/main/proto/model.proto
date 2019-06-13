@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+option java_package = "com.hqbhoho.bigdata.learnFlink.serialization.protobuf";
+option java_outer_classname = "ProtobufModel";
+
+message Account {
+    required string name = 1;
+    required int32 account = 2;
+    required int64 timestamp = 3;
+}
