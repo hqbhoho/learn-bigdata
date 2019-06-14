@@ -23,11 +23,12 @@ public class CustomSerializerExample {
         //构建运行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 //        env.disableOperatorChaining();
-//        env.setParallelism(2);
+//        env.setParallelism(1);
 //        env.getConfig().enableForceKryo();
 //        env.getConfig().disableGenericTypes();
+//        env.getConfig().disableAutoTypeRegistration();
 //        env.getConfig().registerTypeWithKryoSerializer(ProtobufModel.Account.class, ProtobufSerializer.class);
-        env.addSource(new MyDataSource(),"source").slotSharingGroup("a").keyBy(i->i.getName()).reduce(new ReduceFunction<ProtobufModel.Account>() {
+        env.addSource(new MyDataSource(),"source").keyBy(i->i.getName()).reduce(new ReduceFunction<ProtobufModel.Account>() {
             @Override
             public ProtobufModel.Account reduce(ProtobufModel.Account value1, ProtobufModel.Account value2) throws Exception {
                 Optional.ofNullable("Thread ID: "+Thread.currentThread().getId()+",process "+value2)
@@ -38,7 +39,7 @@ public class CustomSerializerExample {
                         .setTimestamp(System.currentTimeMillis())
                         .build();
             }
-        }).slotSharingGroup("b").print();
+        }).print();
         env.execute("CustomSerializerExample");
     }
 }
