@@ -61,14 +61,18 @@ import java.util.Optional;
  *    不能容忍中断    A B+ C  必须满足这个模式 A B B* B C
  *    eg:  A B1 B2 B3 C -->  A B1 B2 B3 C , A B C ---> A B C , A C B1 B2 B3 C --> A B1 B2 B3 C
  * 2. Relaxed Contiguity
- *    能够容忍中断   A B+ C   必须满足这个模式 A B 任意事件*(但是其中B不能随意组合，只能是匹配所有) B C
+ *    能够容忍中断（及去除AC之间的非B事件）   A B+ C   必须满足这个模式 A B 任意事件*(但是其中B不能随意组合，只能是匹配所有) B C
  *    eg:  A D1 B1 D1 B2 D2 B3 C -->  A B1 B2 B3 C
+ *    B3 C 事件必须有   所以此处只有  A B1 B2 B3 C
+ *    不容忍跨匹配到的事件进行匹配  比如  A B1 B3 C
  * 3. non-deterministic relaxed contiguity
- *    最大限度的容忍中断   A B+ C  必须满足这个模式 A B 任意事件*(但是其中B可以随意组合) B C
+ *    最大限度的容忍中断（及去除AC之间的非B事件）   A B+ C  必须满足这个模式 A B 任意事件*(但是其中B可以随意组合) B C
+ *    容忍跨匹配到的事件进行匹配  比如  A B1 B4 C
  *    eg:  A D1 B1 D1 B2 D2 B3 B4 C -->  A B1 B2 B3 B4 C
  *                                    A B1 B2 B4 C
  *                                    A B1 B3 B4 C
  *                                    A B1 B4 C
+ *
  * @author hqbhoho
  * @version [v1.0]
  * @date 2019/06/14
@@ -77,7 +81,7 @@ public class CombiningPatternsExample {
     public static void main(String[] args) throws Exception {
         // 获取配置参数
         ParameterTool tool = ParameterTool.fromArgs(args);
-        String host = tool.get("host", "10.105.1.182");
+        String host = tool.get("host", "192.168.5.131");
         int port1 = tool.getInt("port1", 19999);
         // 创建环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -105,7 +109,7 @@ public class CombiningPatternsExample {
                 // strict contiguity
 //                .consecutive()
                 // non-deterministic relaxed contiguity
-                .allowCombinations()
+//                .allowCombinations()
                 .next("C")
                 .where(new SimpleCondition<Tuple4<String, BigDecimal, BigDecimal, Long>>() {
                     @Override
