@@ -32,13 +32,13 @@ import java.util.Optional;
  * hqbhoho,111,2,1557109592000
  * hqbhoho,110,2,1557109592000
  * xiaomixi,240,1,1557109594000
- * hqbhoho,119,1,1557109591000
+ * hqbhoho,119,1,1557109591000     迟到的数据  ---> lateDataOutputTag
  * hqbhoho,114,3,1557109595000
  * hqbhoho,114,2,1557109595000
- * hqbhoho,120,4,1557109597000
+ * hqbhoho,120,4,1557109597000     此处可以匹配到规则
  * xiaoxiao,114,2,1557109596000
  * hqbhoho,116,2,1557109598000
- * hqbhoho,117,2,1557109599000
+ * hqbhoho,117,2,1557109599000    generate watermark 1557109597000 ,trigger pattern compute
  * results:
  * Thread: 57,watermark generate, watermark: 1557109592000
  * late data: (hqbhoho,119,1,1557109591000)
