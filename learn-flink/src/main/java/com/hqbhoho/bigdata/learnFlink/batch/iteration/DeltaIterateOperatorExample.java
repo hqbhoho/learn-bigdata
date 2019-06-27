@@ -68,13 +68,12 @@ public class DeltaIterateOperatorExample {
                 .with(new FlatJoinFunction<Tuple3<Long, Long, Long>, Tuple2<Long, Long>, Tuple2<Long, Long>>() {
                     @Override
                     public void join(Tuple3<Long, Long, Long> first, Tuple2<Long, Long> second, Collector<Tuple2<Long, Long>> out) throws Exception {
-                        Optional.ofNullable("process event: " + first).ifPresent(System.out::println);
                         if (second.f1 < first.f1) {
-
+                            Optional.ofNullable("process event: " + first+"===="+second).ifPresent(System.out::println);
                             out.collect(Tuple2.of(first.f0, second.f1));
                         }
                     }
-                });
+                });// 此处可在做一次聚合   减少数据量
         // detlaSolutionSet  and   new workset
         DataSet<Tuple2<Long, Long>> result = it.closeWith(changes, changes);
         result.print();
