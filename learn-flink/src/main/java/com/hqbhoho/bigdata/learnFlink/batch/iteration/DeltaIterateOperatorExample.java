@@ -23,6 +23,15 @@ import java.util.Optional;
  * 1. 达到最大迭代次数
  * 2. new workset 为空
  * 3. 自定义收敛条件
+ * <p>
+ * results:
+ * (3,1)
+ * (7,5)
+ * (6,5)
+ * (1,1)
+ * (5,5)
+ * (2,1)
+ * (4,1)
  *
  * @author hqbhoho
  * @version [v1.0]
@@ -69,7 +78,7 @@ public class DeltaIterateOperatorExample {
                     @Override
                     public void join(Tuple3<Long, Long, Long> first, Tuple2<Long, Long> second, Collector<Tuple2<Long, Long>> out) throws Exception {
                         if (second.f1 < first.f1) {
-                            Optional.ofNullable("process event: " + first+"===="+second).ifPresent(System.out::println);
+                            Optional.ofNullable("process event: " + first + "====" + second).ifPresent(System.out::println);
                             out.collect(Tuple2.of(first.f0, second.f1));
                         }
                     }
