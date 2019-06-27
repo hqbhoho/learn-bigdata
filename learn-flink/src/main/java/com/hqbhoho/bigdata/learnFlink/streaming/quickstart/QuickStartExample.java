@@ -19,10 +19,12 @@ import java.util.Arrays;
  */
 public class QuickStartExample {
     public static void main(String[] args) throws Exception {
+        // 构建运行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // source and operator
         DataStream<Tuple2<String, Integer>> dataStream = env
                 .socketTextStream("10.105.1.182", 19999)
-                .flatMap(new FlatMapFunction<String,Tuple2<String, Integer>>() {
+                .flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
                     @Override
                     public void flatMap(String s, Collector<Tuple2<String, Integer>> collector) throws Exception {
                         Arrays.asList(s.split(" "))
@@ -34,8 +36,8 @@ public class QuickStartExample {
                 .keyBy(0)
                 .timeWindow(Time.seconds(5))
                 .sum(1);
+        // sink
         dataStream.print();
-
         env.execute("Window WordCount");
     }
 }

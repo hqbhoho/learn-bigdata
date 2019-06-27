@@ -27,7 +27,6 @@ public class ScalarFunctionExample {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
-
         // 注册函数
         tableEnv.registerFunction("regexp_like_1", new RegexpLike());
         tableEnv.registerFunction("regexp_like_2", new RegexpLike(".*xi.*"));
@@ -47,12 +46,10 @@ public class ScalarFunctionExample {
                 .select("*");
         // use the function in SQL API
         Table result2 = tableEnv.sqlQuery("select * from example where regexp_like_1(name,'.*ho.*') = 0");
-
+        // sink
         tableEnv.toAppendStream(result1, Row.class).print();
         tableEnv.toAppendStream(result2, Row.class).print();
-
         env.execute("ScalarFunctionExample");
-
     }
 
 

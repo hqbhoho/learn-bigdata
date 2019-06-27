@@ -35,33 +35,26 @@ public class AggregationFunctionExample {
         // 获取运行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
-
         // 设置全局配置参数
         Configuration conf = new Configuration();
         conf.setDouble("weight_factor", 0.2);
         env.getConfig().setGlobalJobParameters(conf);
-
         // 注册函数
         tableEnv.registerFunction("weight_avg", new WeightedAvgFunction());
-
         DataStreamSource<Tuple3<String, Double, Integer>> input = env.fromElements(
                 Tuple3.of("iphone5", 2000.00, 4),
                 Tuple3.of("iphone6", 4000.00, 6),
                 Tuple3.of("iphone5", 4000.00, 6),
                 Tuple3.of("iphone6", 8000.00, 4)
         );
-
         // 注册表  DataStream  --->  Table
         tableEnv.registerDataStream("example", input, "item,price,num");
-
         // table api
         Table resultTable1 = tableEnv.scan("example")
                 .groupBy("item")
                 .select("item,weight_avg(price,num) as avg");
         // sql api
         Table resultTable2 = tableEnv.sqlQuery("select item,weight_avg(price,num) from example group by item");
-
-
         //  Table  ---> DataStream
         /*tableEnv.toRetractStream(resultTable1, Row.class)
                 .print();*/
