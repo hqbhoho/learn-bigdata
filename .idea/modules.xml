@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/learn-bigdata.iml" filepath="$PROJECT_DIR$/learn-bigdata.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-concurrent/learn-concurrent.iml" filepath="$PROJECT_DIR$/learn-concurrent/learn-concurrent.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" filepath="$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" />
-      <module fileurl="file://$PROJECT_DIR$/learn-flink/learn-flink.iml" filepath="$PROJECT_DIR$/learn-flink/learn-flink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-flink_v1.8/learn-flink_v1.8.iml" filepath="$PROJECT_DIR$/learn-flink_v1.8/learn-flink_v1.8.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flume/learn-flume.iml" filepath="$PROJECT_DIR$/learn-flume/learn-flume.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-guava/learn-guava.iml" filepath="$PROJECT_DIR$/learn-guava/learn-guava.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-kafka/learn-kafka.iml" filepath="$PROJECT_DIR$/learn-kafka/learn-kafka.iml" />
