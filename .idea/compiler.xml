@@ -10,6 +10,7 @@
         <module name="learn-elasticsearsh" />
         <module name="learn-flink" />
         <module name="learn-flume" />
+        <module name="learn-guava" />
         <module name="learn-kafka" />
         <module name="learn-nio" />
       </profile>
@@ -20,6 +21,7 @@
       <module name="learn-elasticsearsh" target="1.8" />
       <module name="learn-flink" target="1.8" />
       <module name="learn-flume" target="1.8" />
+      <module name="learn-guava" target="1.8" />
       <module name="learn-kafka" target="1.8" />
       <module name="learn-nio" target="1.8" />
     </bytecodeTargetLevel>

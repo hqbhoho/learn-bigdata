@@ -3,7 +3,7 @@ package com.hqbhoho.bigdata.learnFlink.batch.connectors;
 /**
  * describe:
  *
- * 后续补充
+ * TODO Flink v1.9 will support Hive
  *
  * @author hqbhoho
  * @version [v1.0]

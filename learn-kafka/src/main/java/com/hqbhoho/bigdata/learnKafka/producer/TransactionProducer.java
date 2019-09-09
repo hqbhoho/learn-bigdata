@@ -29,7 +29,7 @@ public class TransactionProducer {
 
             producer.send(new ProducerRecord<String, String>("test", "transaction-data-2"));
             // 3.3 do其他业务逻辑,还可以发送其他topic的消息。
-//            producer.sendOffsetsToTransaction(null,null);
+            producer.sendOffsetsToTransaction(null,null);
             // 4.事务提交
             producer.commitTransaction();
         } catch (Exception e) {

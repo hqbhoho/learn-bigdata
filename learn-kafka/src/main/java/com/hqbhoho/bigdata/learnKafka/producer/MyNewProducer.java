@@ -32,6 +32,7 @@ public class MyNewProducer {
 //        producer.send(record1);
 //        producer.send(record2);
 
+
         //定义同（异）步
         boolean isAsync = false;
         IntStream.rangeClosed(0, 10).forEach(i ->

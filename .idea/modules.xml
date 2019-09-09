@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" filepath="$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flink/learn-flink.iml" filepath="$PROJECT_DIR$/learn-flink/learn-flink.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flume/learn-flume.iml" filepath="$PROJECT_DIR$/learn-flume/learn-flume.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-guava/learn-guava.iml" filepath="$PROJECT_DIR$/learn-guava/learn-guava.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-kafka/learn-kafka.iml" filepath="$PROJECT_DIR$/learn-kafka/learn-kafka.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-nio/learn-nio.iml" filepath="$PROJECT_DIR$/learn-nio/learn-nio.iml" />
     </modules>

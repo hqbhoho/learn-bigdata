@@ -14,6 +14,7 @@
         <module>learn-nio</module>
         <module>learn-flink</module>
         <module>learn-concurrent</module>
+        <module>learn-guava</module>
     </modules>
     <packaging>pom</packaging>
 
