@@ -1,6 +1,7 @@
 package com.hqbhoho.bigdata.guava.io;
 
 import com.google.common.base.Preconditions;
+import com.google.common.io.BaseEncoding;
 
 /**
  * describe:
@@ -101,10 +102,15 @@ public class Base64 {
 
     public static void main(String[] args) {
 
-        String s = "asdfgh===";
+        String s = "asdf";
         String encode = Base64.encode(s);
         System.out.println(encode);
         System.out.println(Base64.decode(encode));
+
+        // Base64 encode and decode with guava
+
+        System.out.println(BaseEncoding.base64().encode(s.getBytes()));
+        System.out.println(new String(BaseEncoding.base64().decode(encode)));
 
 
     }
