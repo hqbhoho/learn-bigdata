@@ -1,0 +1,17 @@
+@startuml
+
+class Singleton{
+ - Singleton()
+ + {static} newInstance():Singleton
+}
+class Client1
+class Client2
+class Client2
+
+Singleton <.. Client1
+Singleton <.. Client2
+Singleton <.. Client3
+
+note bottom of Client1 : only one singleton object to be used in all client.
+
+@enduml

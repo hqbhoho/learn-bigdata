@@ -1,0 +1,70 @@
+@startuml
+
+interface PhoneFactory{
+    {abstract} {method} + Phone productPhone(String name)
+}
+interface Phone{
+     {abstract} {method} + call()
+     {abstract} {method} + specialAction()
+}
+
+abstract class AbstractPhone{
+     {method} + call()
+}
+class HWPhone1{
+    {field} - String name
+    {field} - String brand
+    {field} - Double price
+    {method} + HWPhone1(String name,String brand,price)
+}
+class HWPhone2{
+    {field} - String name
+    {field} - String brand
+    {field} - Double price
+    {method} + HWPhone2(String name,String brand,price)
+}
+class XMPhone1{
+    {field} - String name
+    {field} - String brand
+    {field} - Double price
+    {method} + XMPhone1(String name,String brand,price)
+}
+class XMPhone2{
+    {field} - String name
+    {field} - String brand
+    {field} - Double price
+    {method} + XMPhone2(String name,String brand,price)
+}
+
+class HWFactory{
+    {method} + HWFactory()
+    {method} + Phone productPhone(String name)
+}
+class XMFactory{
+    {method} + XMFactory()
+    {method} + Phone productPhone(String name)
+}
+
+class Client
+
+PhoneFactory <|.. HWFactory
+PhoneFactory <|.. XMFactory
+Phone <.. PhoneFactory
+Phone <.. HWFactory
+Phone <.. XMFactory
+HWPhone1 <.. HWFactory
+HWPhone2 <.. HWFactory
+XMPhone1 <.. XMFactory
+XMPhone2 <.. XMFactory
+Phone <|.. AbstractPhone
+AbstractPhone <|-- HWPhone1
+AbstractPhone <|-- HWPhone2
+AbstractPhone <|-- XMPhone1
+AbstractPhone <|-- XMPhone2
+
+HWFactory <.. Client
+XMFactory <.. Client
+Phone <.. Client
+PhoneFactory <.. Client
+
+@enduml

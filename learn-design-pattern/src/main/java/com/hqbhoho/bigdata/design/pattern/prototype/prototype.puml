@@ -1,0 +1,31 @@
+@startuml
+
+Interface Cloneable{
+ {abstract} {method} + clone()
+}
+class Person{
+    {field} age:int
+    {field} name:String
+    {field} car:Car
+    {method} + clone()
+}
+class Car{
+    {field} age:int
+    {field} name:String
+    {method} + clone()
+}
+class Client{
+
+}
+
+Person o-- Car
+Cloneable <|.. Person
+
+Person <.. Client
+Car <.. Client
+note right of Client : Person p1 = new Person(...);\n Person p2 = (Person) p1.clone();
+
+
+
+
+@enduml

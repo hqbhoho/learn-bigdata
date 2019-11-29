@@ -1,0 +1,64 @@
+@startuml
+
+class Connection{
+    {field} - String driver
+    {field} - String url
+    {field} - String username
+    {field} - String passwd
+    + Connection()
+    {method} + void setDriver(String driver)
+    {method} + void setUrl(String driver)
+    {method} + void setUsername(String driver)
+    {method} + void setPasswd(String driver)
+    {method} + String  toString()
+}
+
+interface ConnectionBuilder{
+       {abstract} {method} + void buildDriver()
+       {abstract} {method} + void buildUrl()
+       {abstract} {method} + void buildUsername()
+       {abstract} {method} + void buildPasswd()
+       {abstract} {method} + Connection getConnetion()
+}
+
+class MysqlConnectionBuiler{
+         {field} - Connection conn
+         {method} + MysqlConnectionBuiler()
+         {method} + void buildDriver()
+         {method} + void buildUrl()
+         {method} + void buildUsername()
+         {method} + void buildPasswd()
+         {method} + Connection getConnetion()
+}
+
+class OracleConnectionBuiler{
+         {field} - Connection conn
+         {method} + OracleConnectionBuiler()
+         {method} + void buildDriver()
+         {method} + void buildUrl()
+         {method} + void buildUsername()
+         {method} + void buildPasswd()
+         {method} + Connection getConnetion()
+}
+
+class ConnectionDirector{
+      {field} - ConnectionBuilder connectionBuilder
+      {method} + ConnectionDirector(ConnectionBuilder connectionBuilder)
+      {method} + Connection build()
+}
+
+class Client
+
+ConnectionBuilder <|.. MysqlConnectionBuiler
+ConnectionBuilder <|.. OracleConnectionBuiler
+Connection <.. ConnectionBuilder
+MysqlConnectionBuiler *-- Connection
+OracleConnectionBuiler *-- Connection
+ConnectionDirector o-- ConnectionBuilder
+ConnectionDirector <.. Client
+MysqlConnectionBuiler <.. Client
+OracleConnectionBuiler <.. Client
+Connection <.. Client
+
+
+@enduml

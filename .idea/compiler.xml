@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="learn-concurrent" />
+        <module name="learn-design-pattern" />
         <module name="learn-elasticsearsh" />
-        <module name="learn-flink" />
+        <module name="learn-flink_v1.8" />
+        <module name="learn-flink_v1.9" />
         <module name="learn-flume" />
         <module name="learn-guava" />
         <module name="learn-kafka" />
@@ -18,8 +20,11 @@
     <bytecodeTargetLevel target="1.8">
       <module name="learn-bigdata" target="1.8" />
       <module name="learn-concurrent" target="1.8" />
+      <module name="learn-design-pattern" target="1.8" />
       <module name="learn-elasticsearsh" target="1.8" />
       <module name="learn-flink" target="1.8" />
+      <module name="learn-flink_v1.8" target="1.8" />
+      <module name="learn-flink_v1.9" target="1.8" />
       <module name="learn-flume" target="1.8" />
       <module name="learn-guava" target="1.8" />
       <module name="learn-kafka" target="1.8" />

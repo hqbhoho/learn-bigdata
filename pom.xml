@@ -12,9 +12,11 @@
         <module>learn-kafka</module>
         <module>learn-elasticsearsh</module>
         <module>learn-nio</module>
-        <module>learn-flink</module>
+        <module>learn-flink_v1.8</module>
         <module>learn-concurrent</module>
         <module>learn-guava</module>
+        <module>learn-flink_v1.9</module>
+        <module>learn-design-pattern</module>
     </modules>
     <packaging>pom</packaging>
 
