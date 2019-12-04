@@ -11,5 +11,13 @@
 
     <artifactId>learn-design-pattern</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

@@ -1,0 +1,31 @@
+@startuml
+abstract class Game{
+    {abstract} {method} + void open();
+    {method} + void initialize();
+    {method} + void readHistory();
+    {method} + void startPlay();
+    {method} + void stopPlay();
+    {abstract} {method} boolean + canReadHistory();
+    {method} + void  playGame();
+}
+
+class Dota{
+     {method} + void open();
+     {method} + boolean canReadHistory();
+}
+class NBA2K19{
+     {method} + void open();
+     {method} + canReadHistory();
+}
+
+class Client
+
+Game <|.. Dota
+Game <|.. NBA2K19
+
+Game <.. Client
+Dota <.. Client
+NBA2K19 <.. Client
+
+
+@enduml

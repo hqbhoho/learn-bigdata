@@ -1,0 +1,25 @@
+@startuml
+
+class ChineseTeacher{
+    {method} + void teach()
+}
+
+interface MethodInterceptor {
+    {method} + Object invoke(Object var1, Method var2, Object[] var3) throws Throwable;
+}
+
+class ChineseTeacherProxyFactory{
+    {field} - ChineseTeacher teacher
+    {method} + Object newProxyInstance()
+}
+
+class Client
+
+MethodInterceptor <|.. ChineseTeacherProxyFactory
+ChineseTeacherProxyFactory *-- ChineseTeacher
+
+ChineseTeacherProxyFactory <.. Client
+
+note top of MethodInterceptor :  利用ASM开源包，对代理对象类的class文件加载进来，\n通过修改其字节码生成子类来处理。\n不需要实现接口。\n但是因为采用的是继承，所以该类或方法最好不要声明成final，
+
+@enduml

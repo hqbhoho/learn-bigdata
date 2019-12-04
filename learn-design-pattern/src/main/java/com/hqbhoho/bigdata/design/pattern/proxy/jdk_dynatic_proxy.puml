@@ -1,0 +1,31 @@
+@startuml
+
+interface Teacher{
+    {abstract} {method} + void teach()
+}
+
+class ChineseTeacher{
+    {method} + void teach()
+}
+
+interface InvocationHandler {
+    {method} + Object invoke(Object var1, Method var2, Object[] var3) throws Throwable;
+}
+
+class JDKChineseTeacherProxyFactory{
+    {field} - Teacher teacher
+    {method} + Object newProxyInstance()
+}
+
+class Client
+
+Teacher <|.. ChineseTeacher
+InvocationHandler <|.. JDKChineseTeacherProxyFactory
+JDKChineseTeacherProxyFactory *-- ChineseTeacher
+
+Teacher <.. Client
+JDKChineseTeacherProxyFactory <.. Client
+
+note top of JDKChineseTeacherProxyFactory :  java动态代理是利用反射机制生成一个实现代理接口的匿名类,\n在调用具体方法前调用InvokeHandler来处理。\njdk动态代理的应用前提，必须是目标类基于统一的接口
+
+@enduml

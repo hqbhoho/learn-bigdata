@@ -1,0 +1,32 @@
+@startuml
+
+interface ChessFlyWeight {
+    {abstract} {method} + void display(Geo geo)
+}
+class GoChessFlyWeight{
+    {field} - String color
+    + GoChessFlyWeight(String color)
+    {method} + void display(Geo geo)
+}
+
+class Geo{
+    {field} - int x
+    {field} - int y
+    + Geo(int x,int y)
+}
+
+class GoChessFlyWeightFactory{
+    {field} - Map<String,ChessFlyWeight> chessFlyWeightMap
+    {method} + ChessFlyWeight getChessFlyWeight(String color)
+}
+
+class Client
+
+ChessFlyWeight <|..  GoChessFlyWeight
+GoChessFlyWeightFactory o-- ChessFlyWeight
+ChessFlyWeight <.. Geo
+GoChessFlyWeight <.. Geo
+Geo <.. Client
+GoChessFlyWeightFactory <.. Client
+ChessFlyWeight <.. Client
+@enduml

@@ -1,0 +1,60 @@
+@startuml
+
+interface Phone{
+    {abstract} {method} + String getDetails()
+    {abstract} {method} + double getPrice()
+}
+
+abstract class AbstractPhone{
+    {field} - String details
+    {field} - String price
+    {method} + AbstractPhone()
+    {method} + void getDetails()
+}
+
+class HWPhone{
+    {method} + HWPhone()
+    {method} + double getPrice()
+}
+
+class XMPhone{
+    {method} + XMPhone()
+    {method} + double getPrice()
+}
+
+abstract class DecoratorPhone {
+
+   {field} - String details
+   {field} - String price
+   {field} - Phone phone
+   {method} + DecoratorPhone(Phone phone)
+   {method} + void showDetails()
+}
+
+class ShellDecoratorPhone{
+   {method} + ShellDecoratorPhone(Phone phone)
+   {method} + double getPrice()
+}
+
+class ScreenProtectorDecoratorPhone{
+    {method} + ScreenProtectorDecoratorPhone(Phone phone)
+    {method} + double getPrice()
+}
+
+class client
+
+Phone <|.. AbstractPhone
+AbstractPhone <|-- HWPhone
+AbstractPhone <|-- XMPhone
+Phone <|.. DecoratorPhone
+DecoratorPhone <|-- ShellDecoratorPhone
+DecoratorPhone <|-- ScreenProtectorDecoratorPhone
+DecoratorPhone o-- Phone
+ShellDecoratorPhone o-- Phone
+ScreenProtectorDecoratorPhone o-- Phone
+HWPhone <.. Client
+XMPhone <.. Client
+ShellDecoratorPhone <.. Client
+ScreenProtectorDecoratorPhone <.. Client
+
+@enduml

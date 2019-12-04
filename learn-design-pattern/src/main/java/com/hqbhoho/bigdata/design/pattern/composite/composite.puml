@@ -1,0 +1,32 @@
+@startuml
+
+interface File{
+    {abstract} {method} + void show()
+}
+
+class Document {
+    {field} - String name
+    {method} + Document(String name)
+    {method} + void show()
+}
+
+class Folder{
+    {field} - String name
+    {field} - List<File> files
+    {method} + Folder(String name)
+    {method} + void addFile(File file)
+    {method} + void removeFile(File file)
+    {method} + void show()
+}
+
+class Client
+
+File <|.. Document
+File <|.. Folder
+Folder o-- File
+File <.. Client
+Document <.. Client
+Folder <.. Client
+
+
+@enduml

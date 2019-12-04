@@ -1,0 +1,28 @@
+@startuml
+interface NormalVoltageAdapter{
+    {abstract} {method} + int output5V()
+}
+
+class ChinaNormalVoltage{
+    {method} + int outputVoltage()
+}
+
+class ChinaNormalVoltageAdapter{
+    {method} + int output5V()
+}
+
+class Phone{
+    {method} + void charging(PhoneVoltage phoneVoltage)
+}
+
+class Client
+
+NormalVoltageAdapter <|.. ChinaNormalVoltageAdapter
+ChinaNormalVoltage <|-- ChinaNormalVoltageAdapter
+NormalVoltageAdapter <.. Phone
+
+NormalVoltageAdapter <.. Client
+Phone <.. Client
+ChinaNormalVoltage <.. Client
+
+@enduml

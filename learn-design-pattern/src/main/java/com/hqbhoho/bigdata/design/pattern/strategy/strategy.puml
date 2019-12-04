@@ -1,0 +1,39 @@
+@startuml
+
+interface QuoteStrategy{
+    {abstract} {method} + Double getQoutePrice()
+}
+
+class NewCustomerQuoteStrategy{
+     {method} + Double getQoutePrice()
+}
+
+class OldCustomerQuoteStrategy{
+     {method} + Double getQoutePrice()
+}
+
+class VIPCustomerQuoteStrategy{
+     {method} + Double getQoutePrice()
+}
+
+
+class QuoteStrategyContext{
+    {field} - QuoteStrategy quoteStrategy
+    + QuoteStrategyContext(QuoteStrategy quoteStrategy)
+    {method} + Double getPrice()
+}
+
+class Client
+QuoteStrategy <|.. NewCustomerQuoteStrategy
+QuoteStrategy <|.. OldCustomerQuoteStrategy
+QuoteStrategy <|.. VIPCustomerQuoteStrategy
+
+QuoteStrategyContext o.. QuoteStrategy
+
+QuoteStrategy <.. Client
+NewCustomerQuoteStrategy <.. Client
+OldCustomerQuoteStrategy <.. Client
+
+QuoteStrategyContext <.. Client
+
+@enduml

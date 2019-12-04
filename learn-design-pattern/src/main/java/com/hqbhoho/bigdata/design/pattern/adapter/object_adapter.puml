@@ -1,0 +1,66 @@
+@startuml
+interface NormalVoltage{
+    {abstract} {method} + int outputVoltage()
+}
+
+interface NormalVoltageAdapter{
+    {abstract} {method} + boolean support(NormalVoltage normalVoltage)
+    {abstract} {method} + int output5V()
+}
+
+class ChinaNormalVoltage{
+     {method} + int outputVoltage()
+}
+
+class JanpaNormalVoltage{
+    {method} + int outputVoltage()
+}
+
+class ChinaNormalVoltageAdapter{
+    {method} + boolean support(NormalVoltage normalVoltage)
+    {method} + int output5V()
+}
+
+class JanpaNormalVoltageAdapter{
+    {method} + boolean support(NormalVoltage normalVoltage)
+    {method} + int output5V()
+}
+
+class NormalVoltageAdapterMapping{
+    {field} - List<NormalVoltageAdapter> adapters
+    {method} + void register(NormalVoltageAdapter normalVoltageAdapter)
+    {method} + NormalVoltageAdapter getNormalVoltageAdapter(NormalVoltage normalVoltage)
+
+}
+
+class Phone {
+    {method} void charging(NormalVoltageAdapter ormalVoltageAdapter)
+}
+
+class Client
+
+NormalVoltage <|.. ChinaNormalVoltage
+NormalVoltage <|.. JanpaNormalVoltage
+NormalVoltageAdapter <|.. ChinaNormalVoltageAdapter
+NormalVoltageAdapter <|.. JanpaNormalVoltageAdapter
+NormalVoltageAdapter <.. NormalVoltageAdapterMapping
+NormalVoltage <.. NormalVoltageAdapterMapping
+NormalVoltage <.. NormalVoltageAdapter
+NormalVoltage <.. ChinaNormalVoltageAdapter
+NormalVoltage <.. JanpaNormalVoltageAdapter
+NormalVoltage <.. ChinaNormalVoltageAdapter
+JanpaNormalVoltageAdapter *.. JanpaNormalVoltage
+ChinaNormalVoltageAdapter *.. ChinaNormalVoltage
+NormalVoltageAdapter <.. Phone
+NormalVoltageAdapter <.. Client
+ChinaNormalVoltageAdapter <.. Client
+JanpaNormalVoltageAdapter <.. Client
+NormalVoltage <.. Client
+ChinaNormalVoltage <.. Client
+JanpaNormalVoltage <.. Client
+Phone <.. Client
+
+
+
+
+@enduml

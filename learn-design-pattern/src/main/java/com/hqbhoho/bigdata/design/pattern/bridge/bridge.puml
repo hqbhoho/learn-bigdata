@@ -1,0 +1,58 @@
+@startuml
+interface Phone{
+    {abstarct} {method} + void installSoftware(Software software)
+    {abstarct} {method} + List<Software> listSoftware()
+    {abstarct} {method} + void showMe()
+    {abstarct} {method} + void showBrand()
+}
+abstract class AbstractPhone{
+     {field} - List<Software> softwares
+     {method} + void installSoftware(Software software)
+     {method} + List<Software> listSoftware()
+     {method} + showMe()
+}
+
+class HWPhone{
+    {method} + void showBrand()
+}
+
+class XMPhone{
+    {method} + void showBrand()
+}
+
+interface Software{
+    {abstarct} {method} + void action()
+}
+
+class WeChat{
+    {method} + void action()
+}
+
+class QQ{
+    {method} + void action()
+}
+
+class Twitter{
+    {method} + void action()
+}
+
+class Client
+
+
+Phone <|.. AbstractPhone
+AbstractPhone <|-- HWPhone
+AbstractPhone <|-- XMPhone
+Software <|.. WeChat
+Software <|.. QQ
+Software <|.. Twitter
+Software <.. Phone
+AbstractPhone o.. Software
+Phone <.. Client
+HWPhone <.. Client
+XMPhone <.. Client
+Software <.. Client
+WeChat <.. Client
+QQ <.. Client
+Twitter <.. Client
+
+@enduml

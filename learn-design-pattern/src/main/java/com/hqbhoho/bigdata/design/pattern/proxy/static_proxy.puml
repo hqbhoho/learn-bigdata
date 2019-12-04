@@ -1,0 +1,25 @@
+@startuml
+
+interface Teacher{
+   {abstract} {method} + void teach()
+}
+class ChineseTeacherProxy{
+    {field} - Teacher teacher
+    {method} + void preTeach()
+    {method} + void teach()
+    {method} + void postTeach()
+
+}
+class ChineseTeacher{
+    {method} + void teach()
+}
+
+class Client
+
+Teacher <|.. ChineseTeacherProxy
+Teacher <|.. ChineseTeacher
+ChineseTeacherProxy *-- ChineseTeacher
+Teacher <.. Client
+ChineseTeacherProxy <.. Client
+
+@enduml

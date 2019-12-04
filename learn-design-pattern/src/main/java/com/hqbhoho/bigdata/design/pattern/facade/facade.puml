@@ -1,0 +1,46 @@
+@startuml
+
+class Computor{
+    {Field} - Cpu cpu
+    {Field} - Ram ram
+    {Field} - Ssd ssd
+    {Field} - Screen screen
+    + Computor()
+    {method} + void start()
+    {method} + void stop()
+}
+
+class Cpu {
+    + Cpu()
+    {method} + void onStart()
+    {method} + void onStop()
+}
+
+class Ram {
+    + Ram()
+    {method} + void onStart()
+    {method} + void onStop()
+}
+
+class Ssd {
+    + Ssd()
+    {method} + void onStart()
+    {method} + void onStop()
+}
+
+class Screen {
+    + Screen()
+    {method} + void onStart()
+    {method} + void onStop()
+}
+
+class Client
+
+Computor *-- Cpu
+Computor *-- Ram
+Computor *-- Ssd
+Computor *-- Screen
+Computor <.. Client
+
+
+@enduml
