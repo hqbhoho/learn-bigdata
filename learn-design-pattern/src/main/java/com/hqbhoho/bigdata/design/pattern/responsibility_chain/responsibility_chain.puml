@@ -1,0 +1,32 @@
+@startuml
+
+abstract class Leader{
+    {field} - Leader next;
+    {method} + void SetNext(Leader next);
+    {abstract} + void approveVacation(int dayNum);
+}
+
+class  SchoolMaster{
+     {method} + void approveVacation(int dayNum);
+}
+
+class  CollegeMaster{
+     {method} + void approveVacation(int dayNum);
+}
+
+class  Teacher{
+     {method} + void approveVacation(int dayNum);
+}
+
+class Client
+
+Leader <|.. SchoolMaster
+Leader <|.. CollegeMaster
+Leader <|.. Teacher
+Leader o.. Leader
+Leader <.. Client
+SchoolMaster <.. Client
+CollegeMaster <.. Client
+Teacher <.. Client
+
+@enduml

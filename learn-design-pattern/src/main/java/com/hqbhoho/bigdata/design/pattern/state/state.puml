@@ -1,0 +1,62 @@
+@startuml
+
+interface  RaffleState{
+     {abstract} {method} + void deductCredit();
+     {abstract} {method} + void raffle();
+     {abstract} {method} + void dispensePrize();
+}
+
+class RaffleActivity{
+    {field} - RaffleState currentRaffleState
+    {field} - NoRaffleState noRaffleState
+    {field} - CanRaffleState canRaffleState
+    {field} - DispensePrizeState dispensePrizeState
+    {field} - DispensePrizeOutState dispensePrizeOutState
+    {method} + void raffle
+
+}
+
+class NoRaffleState{
+    {field} - RaffleActivity raffleActivity
+    {method} + void decuctcCredit();
+    {method} + void raffle();
+    {method} + void dispensePrize();
+}
+
+class CanRaffleState{
+    {field} - RaffleActivity raffleActivity
+    {method} + void decuctcCredit();
+    {method} + void raffle();
+    {method} + void dispensePrize();
+}
+
+class DispensePrizeState{
+    {field} - RaffleActivity raffleActivity
+    {method} + void decuctcCredit();
+    {method} + void raffle();
+    {method} + void dispensePrize();
+}
+
+class DispensePrizeOutState{
+    {field} - RaffleActivity raffleActivity
+    {method} + void decuctcCredit();
+    {method} + void raffle();
+    {method} + void dispensePrize();
+}
+
+class Client
+
+RaffleState <|.. NoRaffleState
+RaffleState <|.. CanRaffleState
+RaffleState <|.. DispensePrizeState
+RaffleState <|.. DispensePrizeOutState
+
+RaffleActivity o.. RaffleState
+RaffleActivity *.. NoRaffleState
+RaffleActivity *.. CanRaffleState
+RaffleActivity *.. DispensePrizeState
+RaffleActivity *.. DispensePrizeOutState
+
+RaffleActivity <.. client
+
+@enduml

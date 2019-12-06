@@ -1,26 +1,49 @@
 @startuml
-
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface OrderCommand{
+   {abstract} {method} + void execute(Order order)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Order{
+    {field} - String name
+    {field} - int quantity
+    {method} + Order(String name,int quantity)
 }
+
+class OrderOperator{
+    {method} + void buy(Order order)
+    {method} + void sell(Order order)
+}
+
+class BuyCommand {
+    {field} - OrderOperator orderOperator
+    {method} + BuyCommand(OrderOperator orderOperator)
+    {method} + void execute(Order order)
+}
+
+class SellCommand {
+    {field} - OrderOperator orderOperator
+    {method} + SellCommand(OrderOperator orderOperator)
+    {method} + void execute(Order order)
+}
+
+class Client
+
+OrderCommand <|.. BuyCommand
+OrderCommand <|.. SellCommand
+
+Order <.. OrderCommand
+Order <.. BuyCommand
+Order <.. SellCommand
+Order <.. OrderOperator
+
+BuyCommand o-- OrderOperator
+SellCommand o-- OrderOperator
+
+Order <.. Client
+OrderCommand <.. Client
+BuyCommand <.. Client
+SellCommand <.. Client
+OrderOperator <.. Client
+
 
 @enduml

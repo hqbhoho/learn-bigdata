@@ -1,0 +1,41 @@
+@startuml
+class StockEvent{
+    {field} - Double priceChange;
+}
+
+interface StockHolder{
+    {abstract} {method} + process(StockEvent stockEvent)
+}
+
+class NewStockHolder{
+    {method} + process(StockEvent stockEvent)
+}
+
+class OldStockHolder{
+    {method} + process(StockEvent stockEvent)
+}
+
+class StockCompany{
+    {field} - List<StockHolder> stockHolders
+    {method} + addStockHolder(StockHolder stockHolder)
+    {method} + removeStockHolder(StockHolder stockHolder)
+    {method} + process(StockEvent stockEvent)
+}
+
+class Client
+
+StockHolder <|.. NewStockHolder
+StockHolder <|.. OldStockHolder
+StockEvent <.. StockHolder
+StockEvent <.. NewStockHolder
+StockEvent <.. OldStockHolder
+
+StockHolder <.. StockCompany
+
+StockHolder<..Client
+NewStockHolder<..Client
+OldStockHolder<..Client
+StockCompany<..Client
+StockEvent <.. Client
+
+@enduml
