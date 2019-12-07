@@ -1,26 +1,58 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface DataBaseMediator{
+    {abstract} {method} + void syncData(String name,String data)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class DataX {
+    {field} - List<DataBase> dataBases;
+    {method} + void register(DataBase dataBase)
+    {method} + void syncData(String name,String data)
 }
+
+interface DataBase{
+    {abstract} {method} + void addData(String data)
+    {abstract} {method} + void syncData(String data)
+    {abstract} {method} + List<String> selectAll()
+}
+
+abstract class AbstractDataBase{
+    {field} - DataBaseMediator dataBaseMediator
+    {field} - List<String> dataList;
+    + AbstractDataBase(DataBaseMediator dataBaseMediator)
+    {method} + void addData(String data)
+    {method} + List<String> selectAll()
+}
+class Mysql{
+    {method} + void syncData(String data)
+}
+
+class Redis{
+    {method} + void syncData(String data)
+}
+
+class ES{
+    {method} + void syncData(String data)
+}
+
+class Client
+
+DataBaseMediator <|.. DataX
+DataBase <.. DataX
+DataBase <|.. AbstractDataBase
+AbstractDataBase <|-- Mysql
+AbstractDataBase <|-- Redis
+AbstractDataBase <|-- ES
+AbstractDataBase o.. DataBaseMediator
+DataBase <.. Client
+DataBaseMediator <.. Client
+Mysql <.. Client
+Redis <.. Client
+ES <.. Client
+
+
+
+
+
 
 @enduml

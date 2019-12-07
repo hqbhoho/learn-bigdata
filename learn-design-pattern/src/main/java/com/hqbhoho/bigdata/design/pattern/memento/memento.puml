@@ -1,0 +1,29 @@
+@startuml
+
+class GameRoleState{
+      {field} - int blood
+      {field} - int magic
+      {method} + void reduce(int blood,int magic)
+}
+
+class GameRole{
+    {field} - GameRoleState gameRoleState
+    {method} + void init(int blood,int magic)
+    {method} + void display()
+    {method} + void recover(StateCaretaker stateCaretaker,int index)
+}
+
+class StateCaretaker{
+      {field} - List<GameRoleState> states
+      {method} + void saveSate(GameRoleState gameRoleState)
+      {method} + GameRoleState getStateAtIndex(int Index)
+
+}
+
+class Client
+GameRole o.. GameRoleState
+GameRole <.. StateCaretaker
+StateCaretaker o.. GameRoleState
+GameRole <.. Client
+StateCaretaker <.. Client
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+
+interface Expression{
+   {abstract} {method} + int interpreter(HashMap<String,Integer> map)
+}
+
+abstract class SymbolExpression{
+    {field} - Expression left
+    {field} - Expression right
+}
+
+class AddExpression{
+    {method} + int interpreter(HashMap<String,Integer>)
+}
+
+class SubExpression{
+    {method} + int interpreter(HashMap<String,Integer>)
+}
+
+class VarExpression{
+    {field} - String key
+    {method} + int interpreter(HashMap<String,Integer>)
+}
+
+class Calculator{
+      {method} - Expression prase(String calStr)
+      {method} + int run(String calStr,HashMap<String,Integer> map)
+}
+
+class Client
+
+Expression <|.. VarExpression
+Expression <|.. SymbolExpression
+
+SymbolExpression <|-- SubExpression
+SymbolExpression <|-- AddExpression
+
+Expression <.. Calculator
+
+Calculator <.. Client
+
+
+@enduml

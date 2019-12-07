@@ -1,0 +1,62 @@
+@startuml
+
+
+interface AdmissionOfficer{
+    {abstract} {method}  + boolean enrollNormalStudent(Student normalstudent)
+    {abstract} {method}  + boolean enrollArtStudent(Student artstudent)
+}
+
+class NormalAdmissionOfficer{
+    {method}  + boolean enrollNormalStudent(Student normalstudent)
+    {method}  + boolean enrollArtStudent(Student artstudent)
+}
+
+class ArtAdmissionOfficer{
+    {method}  + boolean enrollNormalStudent(Student normalstudent)
+    {method}  + boolean enrollArtStudent(Student artstudent)
+}
+
+interface Student{
+    {abstract} {method} + void accept(AdmissionOfficer admissionOfficer)
+}
+
+class NormalStudent{
+    {field} - String name
+    {field} - String score
+    {method} + void accept(AdmissionOfficer admissionOfficer)
+}
+
+class ArtStudent{
+    {field} - String name
+    {field} - String score
+    {field} - String artScore
+    {method} + void accept(AdmissionOfficer admissionOfficer)
+}
+
+class School{
+    {field} - List<Student> students
+    {method} + void add(Student student)
+    {method} + void enrollNewStudents(AdmissionOfficer admissionOfficer)
+}
+
+class Client
+
+AdmissionOfficer <|.. NormalAdmissionOfficer
+AdmissionOfficer <|.. ArtAdmissionOfficer
+School o.. Student
+AdmissionOfficer <.. School
+Student <|.. NormalStudent
+Student <|.. ArtStudent
+AdmissionOfficer <.. Student
+Student <.. AdmissionOfficer
+NormalAdmissionOfficer <.. Client
+ArtAdmissionOfficer <.. Client
+NormalStudent <.. Client
+ArtStudent <.. Client
+School <..Client
+
+
+
+
+
+@enduml

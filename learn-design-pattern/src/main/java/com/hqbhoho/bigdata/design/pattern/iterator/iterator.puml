@@ -1,0 +1,38 @@
+@startuml
+
+interface Iterator{
+    {abstract} {method} + boolean hasNext()
+    {abstract} {method} + Object Next()
+}
+
+class BookShelfIterator{
+    {field} - BookShelf bookShelf
+    {field} - int index
+    {method} + boolean hasNext()
+    {method} + Object Next()
+}
+
+interface BookShelf{
+    {abstract} {method} + void addBook(String name)
+    {abstract} {method} + Iterator getBookShelfIterator()
+}
+
+class ComputerBookShelf{
+    {field} - List<String> books
+    {method} + void addBook(String name)
+    {method} + Iterator getBookShelfIterator()
+}
+
+class Client
+
+Iterator <|.. BookShelfIterator
+BookShelf <|.. ComputerBookShelf
+BookShelfIterator o.. BookShelf
+Iterator <.. BookShelf
+BookShelf <.. Client
+ComputerBookShelf <.. Client
+BookShelfIterator <.. Client
+Iterator <.. Client
+
+
+@enduml
