@@ -12,6 +12,7 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
 /**
@@ -40,8 +41,13 @@ public class NettyServerExample {
                             pipeline.addLast(new ServerHandlerExample());
                         }
                     });
-            ChannelFuture future = bootstrap.bind(9999).sync();
+            ChannelFuture future = bootstrap.bind(0).sync();
+            System.out.println(((InetSocketAddress) future.channel().localAddress()).getPort());
+
             future.channel().closeFuture().sync();
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

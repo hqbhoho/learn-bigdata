@@ -20,7 +20,7 @@ public class NioClientExample {
         try {
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
-            socketChannel.connect(new InetSocketAddress("localhost", 8888));
+            socketChannel.connect(new InetSocketAddress("localhost", 19999));
             Selector selector = Selector.open();
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
             while (true) {

@@ -23,7 +23,7 @@ public class ClientRequestHandler {
 
     private Selector selector;
 
-    private ByteBuffer buffer = ByteBuffer.allocate(1024);
+//    private ;
 
     public ClientRequestHandler(Selector selector) {
         this.selector = selector;
@@ -44,7 +44,7 @@ public class ClientRequestHandler {
 
     public void handleRead(SelectionKey key) {
         SocketChannel socketChannel = (SocketChannel) key.channel();
-        buffer.clear();
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
         try {
             socketChannel.read(buffer);
             InetSocketAddress remoteAddress = (InetSocketAddress) socketChannel.getRemoteAddress();
@@ -60,10 +60,11 @@ public class ClientRequestHandler {
 
     public void handleWrite(SelectionKey key) {
         SocketChannel socketChannel = (SocketChannel) key.channel();
-        buffer.clear();
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
         System.out.println("请输入发送给服务器的内容：");
         Scanner scan = new Scanner(System.in);
         byte[] message = scan.nextLine().getBytes();
+        System.out.println(message.length);
         buffer.put(message, 0, message.length);
         buffer.flip();
         try {
