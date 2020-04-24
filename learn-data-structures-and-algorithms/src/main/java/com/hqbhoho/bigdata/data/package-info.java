@@ -24,6 +24,8 @@ package com.hqbhoho.bigdata.data;
  *  {@link com.hqbhoho.bigdata.data.structures.array.TwoSum}
  *  https://leetcode-cn.com/problems/plus-one/
  *  {@link com.hqbhoho.bigdata.data.structures.array.PlusOne}
+ *  https://leetcode.com/problems/trapping-rain-water/
+ *  {@link com.hqbhoho.bigdata.data.structures.array.TrappingRainWater}
  *
  * **************************************************************
  * (2) LinkList
@@ -40,13 +42,78 @@ package com.hqbhoho.bigdata.data;
  *  https://leetcode-cn.com/problems/merge-two-sorted-lists/
  *  {@link com.hqbhoho.bigdata.data.structures.linklist.MergeTwoSortedList}
  *
+ * **************************************************************
+ * (3) Stack
+ *  https://leetcode-cn.com/problems/valid-parentheses/
+ *  {@link com.hqbhoho.bigdata.data.structures.stack.VaildParentheses}
+ *  https://leetcode-cn.com/problems/min-stack/
+ *  {@link com.hqbhoho.bigdata.data.structures.stack.MinStack}
+ *  https://leetcode-cn.com/problems/largest-rectangle-in-histogram
+ *  {@link com.hqbhoho.bigdata.data.structures.stack.largestRectangleInHistogram}
  *
- *•	https://leetcode-cn.com/problems/valid-parentheses/
- * •	https://leetcode-cn.com/problems/min-stack/
- * •	https://leetcode-cn.com/problems/largest-rectangle-in-histogram
- * •	https://leetcode-cn.com/problems/sliding-window-maximum
- * •	https://leetcode.com/problems/design-circular-deque
- * •	https://leetcode.com/problems/trapping-rain-water/
+ * **************************************************************
+ * (4) queue
+ *  https://leetcode-cn.com/problems/sliding-window-maximum/
+ *  {@link com.hqbhoho.bigdata.data.structures.queue.SlidingWindowMaximum}
+ *  https://leetcode.com/problems/design-circular-deque
+ *  {@link com.hqbhoho.bigdata.data.structures.queue.CircularDeque}
+ *
+ * **************************************************************
+ * (5) hashtable
+ *  https://leetcode-cn.com/problems/valid-anagram/description/
+ *  {@link com.hqbhoho.bigdata.data.structures.hashtable.ValidAnagram}
+ *  https://leetcode-cn.com/problems/group-anagrams/
+ *  {@link com.hqbhoho.bigdata.data.structures.hashtable.GroupAnagrams}
+ *
+ * **************************************************************
+ * (6) tree
+ *  https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
+ *  {@link com.hqbhoho.bigdata.data.structures.tree.binarytree.BinaryTreeTraversal#midOrder(com.hqbhoho.bigdata.data.structures.tree.binarytree.BinaryTreeTraversal.TreeNode, java.util.List)}
+ *	https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+ *  {@link com.hqbhoho.bigdata.data.structures.tree.binarytree.BinaryTreeTraversal#preOrder(com.hqbhoho.bigdata.data.structures.tree.binarytree.BinaryTreeTraversal.TreeNode, java.util.List)}
+ *	https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/
+ *  {@link com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal#postOrder(com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal.Node, java.util.List)}
+ *	https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/
+ *  {@link com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal#preOrder(com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal.Node, java.util.List)}
+ *	https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/
+ * 	{@link com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal#levelOrder(com.hqbhoho.bigdata.data.structures.tree.narytree.NaryTreeTraversal.Node, java.util.List)}
+ *
+ *
+ *
+ * **************************************************************
+ *  Algorithms
+ * **************************************************************
+ * (1) recusion
+ *	https://leetcode-cn.com/problems/generate-parentheses/
+ * 	{@link com.hqbhoho.bigdata.data.algorithms.recursion.GenerateParenthesis}
+ * 	https://leetcode-cn.com/problems/invert-binary-tree/description/
+ * 	{@link com.hqbhoho.bigdata.data.algorithms.recursion.InvertBinaryTree}
+ * 	https://leetcode-cn.com/problems/validate-binary-search-tree
+ * 	{@link com.hqbhoho.bigdata.data.algorithms.recursion.ValidateBinarySearchTree}
+ *
+ *
+ *
+ *
+ *
+ *	https://leetcode-cn.com/problems/validate-binary-search-tree
+ *	https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
+ *	https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
+ *	https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
+ *	https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+ *	https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+ *	https://leetcode-cn.com/problems/combinations/
+ *	https://leetcode-cn.com/problems/permutations/
+ *	https://leetcode-cn.com/problems/permutations-ii/
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *
  *
  *
