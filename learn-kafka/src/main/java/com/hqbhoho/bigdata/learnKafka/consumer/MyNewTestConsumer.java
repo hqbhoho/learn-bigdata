@@ -25,8 +25,10 @@ public class MyNewTestConsumer {
     public static void main(String[] args) {
         //创建consumer
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(loadProp());
+        /*TopicPartition kkk = new TopicPartition("apex_irc_quot_alert", 2);
+        consumer.assign(Arrays.asList(kkk));*/
         // 订阅topic并定义再平衡监听器
-        consumer.subscribe(Collections.singletonList("apex_irc_real_alert"), new ConsumerRebalanceListener() {
+        consumer.subscribe(Collections.singletonList("apex_irc_quot_alert"), new ConsumerRebalanceListener() {
             private int count =0;
             @Override
             public void onPartitionsRevoked(Collection<TopicPartition> collection) {
@@ -68,7 +70,7 @@ public class MyNewTestConsumer {
         props.put("bootstrap.servers", "10.105.1.172:9092,10.105.1.175:9092,10.105.1.177:9092");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("group.id", "hqbhoho004");
+        props.put("group.id", "hqbhoho002");
         props.put("client.id", "hqbhoho-client");
         props.put("auto.offset.reset","earliest");
         return props;

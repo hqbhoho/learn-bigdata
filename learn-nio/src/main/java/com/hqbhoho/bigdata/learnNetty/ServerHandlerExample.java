@@ -23,6 +23,7 @@ public class ServerHandlerExample extends ChannelInboundHandlerAdapter {
         InetSocketAddress socketAddress = (InetSocketAddress) ctx.channel().remoteAddress();
         LOG.info("接到客户端(ip:{},port:{})的请求，请求内容是: {}", socketAddress.getHostName(), socketAddress.getPort(), msg);
         String response = "Server time: " + System.currentTimeMillis();
+        ctx.channel().pipeline().writeAndFlush(response);
         ctx.writeAndFlush(response);
     }
 

@@ -68,7 +68,7 @@ public class NettyTransportClient implements TransportClient {
                                     pipeline.addLast(handlers);
                                 }
 
-                                pipeline.addLast(new ResponseProcessHandler(callbacks, responses,pengingRequests));
+                                pipeline.addLast(new ResponseProcessHandler(callbacks, responses, pengingRequests));
                             }
                         });
                 ChannelFuture future = bootstrap.connect(this.ip, this.port).sync();
@@ -128,7 +128,7 @@ public class NettyTransportClient implements TransportClient {
 
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
-            new Thread(()->{
+            new Thread(() -> {
                 try {
                     RPCRequest request = this.pengingRequests.take();
                     ctx.channel().pipeline().writeAndFlush(request);
@@ -136,7 +136,6 @@ public class NettyTransportClient implements TransportClient {
                     e.printStackTrace();
                 }
             }).start();
-
         }
 
         @Override

@@ -4,14 +4,20 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/learn-bigdata.iml" filepath="$PROJECT_DIR$/learn-bigdata.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-concurrent/learn-concurrent.iml" filepath="$PROJECT_DIR$/learn-concurrent/learn-concurrent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-data-structures-and-algorithms/learn-data-structures-and-algorithms.iml" filepath="$PROJECT_DIR$/learn-data-structures-and-algorithms/learn-data-structures-and-algorithms.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-design-pattern/learn-design-pattern.iml" filepath="$PROJECT_DIR$/learn-design-pattern/learn-design-pattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" filepath="$PROJECT_DIR$/learn-elasticsearsh/learn-elasticsearsh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-flink_v1.10/learn-flink_v1.10.iml" filepath="$PROJECT_DIR$/learn-flink_v1.10/learn-flink_v1.10.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flink_v1.8/learn-flink_v1.8.iml" filepath="$PROJECT_DIR$/learn-flink_v1.8/learn-flink_v1.8.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flink_v1.9/learn-flink_v1.9.iml" filepath="$PROJECT_DIR$/learn-flink_v1.9/learn-flink_v1.9.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-flume/learn-flume.iml" filepath="$PROJECT_DIR$/learn-flume/learn-flume.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-guava/learn-guava.iml" filepath="$PROJECT_DIR$/learn-guava/learn-guava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-hive/learn-hive.iml" filepath="$PROJECT_DIR$/learn-hive/learn-hive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-jmx/learn-jmx.iml" filepath="$PROJECT_DIR$/learn-jmx/learn-jmx.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-kafka/learn-kafka.iml" filepath="$PROJECT_DIR$/learn-kafka/learn-kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-kudu/learn-kudu.iml" filepath="$PROJECT_DIR$/learn-kudu/learn-kudu.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn-nio/learn-nio.iml" filepath="$PROJECT_DIR$/learn-nio/learn-nio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-spark/learn-spark.iml" filepath="$PROJECT_DIR$/learn-spark/learn-spark.iml" />
     </modules>
   </component>
 </project>

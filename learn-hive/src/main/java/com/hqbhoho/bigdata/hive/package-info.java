@@ -1,0 +1,1 @@
+package com.hqbhoho.bigdata.hive;

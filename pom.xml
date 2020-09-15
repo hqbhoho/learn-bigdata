@@ -17,6 +17,12 @@
         <module>learn-guava</module>
         <module>learn-flink_v1.9</module>
         <module>learn-design-pattern</module>
+        <module>learn-data-structures-and-algorithms</module>
+        <module>learn-hive</module>
+        <module>learn-spark</module>
+        <module>learn-jmx</module>
+        <module>learn-flink_v1.10</module>
+        <module>learn-kudu</module>
     </modules>
     <packaging>pom</packaging>
 

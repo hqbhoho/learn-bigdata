@@ -49,6 +49,7 @@ public class UnorderedPorcessTimeAsyncIOExample {
         int port = tool.getInt("port", 19999);
         //获取运行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
         //指定时间
         env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
         env.setParallelism(1);

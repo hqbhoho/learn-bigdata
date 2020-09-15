@@ -35,7 +35,22 @@ public class BroadcastVariablesExample {
                 Tuple3.of("1001", "computer", 1),
                 Tuple3.of("1002", "mac", 4)
         );
-        order.map(new RichMapFunction<Tuple3<String, String, Integer>, Tuple5<String, String, Integer, String, Integer>>() {
+        order.map(new RichMapFunction<Tuple3<String, String, Integer>, Tuple3<String, String, Integer>>() {
+            @Override
+            public void open(Configuration parameters) throws Exception {
+                // 获取广播变量
+                List<Tuple4<String, String, Integer, String>> info =
+                        getRuntimeContext().getBroadcastVariable("consumer_info");
+                for (Tuple4<String, String, Integer, String> value : info) {
+                    System.out.println(info);
+                }
+            }
+            @Override
+            public Tuple3<String, String, Integer> map(Tuple3<String, String, Integer> value) throws Exception {
+                return value;
+            }
+        })/*.withBroadcastSet(info, "consumer_info")*/
+                .map(new RichMapFunction<Tuple3<String, String, Integer>, Tuple5<String, String, Integer, String, Integer>>() {
 
             private Map<String, Tuple4<String, String, Integer, String>> info_map = new HashMap<>();
 

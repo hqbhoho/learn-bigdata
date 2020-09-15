@@ -7,28 +7,41 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="learn-concurrent" />
+        <module name="learn-data-structures-and-algorithms" />
         <module name="learn-design-pattern" />
         <module name="learn-elasticsearsh" />
+        <module name="learn-flink_v1.10" />
         <module name="learn-flink_v1.8" />
         <module name="learn-flink_v1.9" />
         <module name="learn-flume" />
         <module name="learn-guava" />
+        <module name="learn-hive" />
+        <module name="learn-jmx" />
         <module name="learn-kafka" />
+        <module name="learn-kudu" />
         <module name="learn-nio" />
+        <module name="learn-spark" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="learn-bigdata" target="1.8" />
       <module name="learn-concurrent" target="1.8" />
+      <module name="learn-data-structures-and-algorithms" target="1.8" />
       <module name="learn-design-pattern" target="1.8" />
       <module name="learn-elasticsearsh" target="1.8" />
       <module name="learn-flink" target="1.8" />
+      <module name="learn-flink_v1.10" target="1.8" />
       <module name="learn-flink_v1.8" target="1.8" />
       <module name="learn-flink_v1.9" target="1.8" />
       <module name="learn-flume" target="1.8" />
       <module name="learn-guava" target="1.8" />
+      <module name="learn-hive" target="1.8" />
+      <module name="learn-jmx" target="1.8" />
       <module name="learn-kafka" target="1.8" />
+      <module name="learn-kudu" target="1.8" />
       <module name="learn-nio" target="1.8" />
+      <module name="learn-spark" target="1.8" />
+      <module name="learn-spring-cloud" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
